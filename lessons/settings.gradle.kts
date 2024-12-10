@@ -1,8 +1,8 @@
-rootProject.name = "recipe-book"
+rootProject.name = "lessons"
 
 pluginManagement {
-    val kotlinVersion: String by settings
     plugins {
+        val kotlinVersion: String by settings
         kotlin("jvm") version kotlinVersion
     }
 }
@@ -11,6 +11,4 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.5.0"
 }
 
-includeBuild("lessons")
-includeBuild("be")
-includeBuild("build-plugin")
+include("m1-init")
