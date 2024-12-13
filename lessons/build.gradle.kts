@@ -1,6 +1,5 @@
 plugins {
-    alias(libs.plugins.kotlin.jvm) apply false
-    alias(libs.plugins.kotlin.multiplatform) apply false
+    kotlin("jvm") apply false
 }
 
 group = "olesyaiv.recipe-book"
