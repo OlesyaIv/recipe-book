@@ -23,3 +23,7 @@ pluginManagement {
 plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.5.0"
 }
+
+include(":common")
+include(":api-v1-jackson")
+include(":api-v1-mappers")

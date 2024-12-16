@@ -6,7 +6,6 @@
   2. name
   3. description 
   4. ingredients
-  5. cookingSteps 
 
 * Функции
   1. create
@@ -14,4 +13,4 @@
   3. update
   4. delete
   5. search
-  6. getCost - общая стоимость ингредиентов
+  6. getIngredientsCost - общая стоимость ингредиентов
