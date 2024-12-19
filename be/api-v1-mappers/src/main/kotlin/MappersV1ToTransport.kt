@@ -9,12 +9,12 @@ import olesyaiv.edu.api.v1.models.IResponse
 import olesyaiv.edu.api.v1.models.RecipeCostResponse
 import olesyaiv.edu.api.v1.models.RecipeCreateResponse
 import olesyaiv.edu.api.v1.models.RecipeDeleteResponse
+import olesyaiv.edu.api.v1.models.RecipeInitResponse
 import olesyaiv.edu.api.v1.models.RecipeReadResponse
 import olesyaiv.edu.api.v1.models.RecipeResponseObject
 import olesyaiv.edu.api.v1.models.RecipeSearchResponse
 import olesyaiv.edu.api.v1.models.RecipeUpdateResponse
 import olesyaiv.edu.api.v1.models.ResponseResult
-
 
 fun RecipeBookContext.toTransportRecipe(): IResponse = when (val cmd = command) {
     RecipeBookCommand.CREATE -> toTransportCreate()
@@ -23,6 +23,12 @@ fun RecipeBookContext.toTransportRecipe(): IResponse = when (val cmd = command) 
     RecipeBookCommand.DELETE -> toTransportDelete()
     RecipeBookCommand.SEARCH -> toTransportSearch()
     RecipeBookCommand.COST -> toTransportCost()
+    RecipeBookCommand.INIT -> toTransportInit()
+    RecipeBookCommand.FINISH -> object: IResponse {
+        override val responseType: String? = null
+        override val result: ResponseResult? = null
+        override val errors: List<olesyaiv.edu.api.v1.models.Error>? = null
+    }
     RecipeBookCommand.NONE -> throw UnknownCommand(cmd)
 }
 
@@ -60,6 +66,11 @@ fun RecipeBookContext.toTransportCost() = RecipeCostResponse(
     result = state.toResult(),
     errors = errors.toTransportErrors(),
     cost = recipeResponse.getIngredientsCost()
+)
+
+fun RecipeBookContext.toTransportInit() = RecipeInitResponse(
+    result = state.toResult(),
+    errors = errors.toTransportErrors(),
 )
 
 fun List<Recipe>.toTransportRecipe(): List<RecipeResponseObject>? = this

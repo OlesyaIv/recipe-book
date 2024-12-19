@@ -17,6 +17,8 @@ object RecipeStub {
         searchRecipe("Sacher Cake", filter)
     )
 
+    fun prepareCost() = cost(STUB_HONEY_CAKE)
+
     private fun searchRecipe(id: String, filter: String) =
         recipe(STUB_HONEY_CAKE, id = id, filter = filter)
 
@@ -26,4 +28,6 @@ object RecipeStub {
         description = "desc $filter $id",
         ingredients = mapOf(RecipeIngredient.EGG to 2.0F),
     )
+
+    private fun cost(base: Recipe) = base.getIngredientsCost()
 }

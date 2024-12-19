@@ -194,6 +194,7 @@ components:
           delete: '#/components/schemas/RecipeDeleteResponse'
           search: '#/components/schemas/RecipeSearchResponse'
           cost: '#/components/schemas/RecipeCostResponse'
+          init: '#/components/schemas/RecipeInitResponse'
 
     UserId:
       type: string
@@ -222,6 +223,9 @@ components:
             type: number
             format: float
 
+    RecipeInitResponse:
+      allOf:
+        - $ref: '#/components/schemas/IResponse'
 
     RecipeCreateObject:
       allOf:

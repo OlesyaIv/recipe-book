@@ -1,6 +1,6 @@
-package controllers
+package olesyaiv.recipebook.spring.controllers
 
-import config.AppSettings
+import olesyaiv.recipebook.spring.base.AppSettings
 import controllerHelper
 import fromTransport
 import olesyaiv.edu.api.v1.models.*
@@ -14,8 +14,8 @@ import kotlin.reflect.KClass
 
 @Suppress("unused")
 @RestController
-@RequestMapping("v1/ad")
-class RecipeBookControllerV1Fine(
+@RequestMapping("v1/recipes")
+class RecipeControllerV1Fine(
     private val appSettings: AppSettings
 ) {
 
@@ -39,8 +39,8 @@ class RecipeBookControllerV1Fine(
     suspend fun search(@RequestBody request: RecipeSearchRequest): RecipeSearchResponse =
         process(appSettings, request = request, this::class, "search")
 
-    @PostMapping("report")
-    suspend fun report(@RequestBody request: RecipeCostRequest): RecipeCostResponse =
+    @PostMapping("cost")
+    suspend fun cost(@RequestBody request: RecipeCostRequest): RecipeCostResponse =
         process(appSettings, request = request, this::class, "cost")
 
     companion object {

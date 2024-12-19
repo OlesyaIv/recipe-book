@@ -29,6 +29,7 @@ class ControllerV2Test {
     )
 
     private val appSettings: IAppSettings = object : IAppSettings {
+        override val corSettings: RecipeBookCorSettings = RecipeBookCorSettings()
         override val processor: RecipeProcessor = RecipeProcessor()
     }
 
@@ -37,16 +38,6 @@ class ControllerV2Test {
             { fromTransport(request) },
             { toTransportRecipe() as RecipeCreateResponse }
         )
-
-    class TestApplicationCall(private val request: IRequest) {
-        var res: IResponse? = null
-
-        @Suppress("UNCHECKED_CAST")
-        fun <T : IRequest> receive(): T = request as T
-        fun respond(res: IResponse) {
-            this.res = res
-        }
-    }
 
     @Test
     fun springHelperTest() = runTest {

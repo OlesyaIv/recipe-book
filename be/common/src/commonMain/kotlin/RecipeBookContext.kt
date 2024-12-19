@@ -8,6 +8,7 @@ import models.RecipeBookWorkMode
 import models.RecipeError
 import models.RecipeFilter
 import stubs.Stubs
+import ws.IRecipeBookWsSession
 
 data class RecipeBookContext(
     var command: RecipeBookCommand = RecipeBookCommand.NONE,
@@ -16,6 +17,8 @@ data class RecipeBookContext(
 
     var workMode: RecipeBookWorkMode = RecipeBookWorkMode.PROD,
     var stubCase: Stubs = Stubs.NONE,
+
+    var wsSession: IRecipeBookWsSession = IRecipeBookWsSession.NONE,
 
     var requestId: RecipeBookRequestId = RecipeBookRequestId.NONE,
     var timeStart: Instant = Instant.NONE,

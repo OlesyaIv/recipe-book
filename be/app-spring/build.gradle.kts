@@ -47,7 +47,6 @@ tasks {
             filter {
                 it.replace("\${VERSION_APP}", project.version.toString())
             }
-
         }
     }
 }
