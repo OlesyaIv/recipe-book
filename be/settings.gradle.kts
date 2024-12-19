@@ -25,5 +25,10 @@ plugins {
 }
 
 include(":common")
+include(":biz")
+include(":stubs")
 include(":api-v1-jackson")
 include(":api-v1-mappers")
+include(":api-v2-kmp")
+include(":app-common")
+include(":app-spring")

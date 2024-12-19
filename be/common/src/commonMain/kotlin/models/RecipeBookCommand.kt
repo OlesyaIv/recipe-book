@@ -7,5 +7,7 @@ enum class RecipeBookCommand {
     UPDATE,
     DELETE,
     SEARCH,
-    COST
+    COST,
+    INIT,
+    FINISH
 }
