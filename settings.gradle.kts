@@ -1,4 +1,4 @@
-rootProject.name = "recipe-book"
+rootProject.name = "recipebook"
 
 pluginManagement {
     val kotlinVersion: String by settings
