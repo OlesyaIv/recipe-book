@@ -12,6 +12,8 @@ kotlin {
 
                 implementation(project(":common"))
                 implementation(project(":stubs"))
+
+                implementation(libs.cor)
             }
         }
         commonTest {

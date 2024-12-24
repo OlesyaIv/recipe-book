@@ -1,6 +1,6 @@
-import olesyaiv.edu.api.v1.models.IResponse
-import olesyaiv.edu.api.v1.models.RecipeCreateResponse
-import olesyaiv.edu.api.v1.models.RecipeResponseObject
+import olesyaiv.recipebook.api.v1.models.IResponse
+import olesyaiv.recipebook.api.v1.models.RecipeCreateResponse
+import olesyaiv.recipebook.api.v1.models.RecipeResponseObject
 import kotlin.jvm.java
 import kotlin.test.Test
 import kotlin.test.assertContains

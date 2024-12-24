@@ -1,7 +1,7 @@
 import com.fasterxml.jackson.databind.MapperFeature
 import com.fasterxml.jackson.databind.json.JsonMapper
-import olesyaiv.edu.api.v1.models.IRequest
-import olesyaiv.edu.api.v1.models.IResponse
+import olesyaiv.recipebook.api.v1.models.IRequest
+import olesyaiv.recipebook.api.v1.models.IResponse
 import kotlin.jvm.java
 
 val apiV1Mapper = JsonMapper.builder().run {

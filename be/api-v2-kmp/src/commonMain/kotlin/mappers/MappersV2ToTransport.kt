@@ -8,16 +8,17 @@ import models.RecipeBookState
 import models.RecipeError
 import models.RecipeId
 import models.RecipeUserId
-import olesyaiv.edu.api.v2.models.IResponse
-import olesyaiv.edu.api.v2.models.RecipeCostResponse
-import olesyaiv.edu.api.v2.models.RecipeCreateResponse
-import olesyaiv.edu.api.v2.models.RecipeDeleteResponse
-import olesyaiv.edu.api.v2.models.RecipeInitResponse
-import olesyaiv.edu.api.v2.models.RecipeReadResponse
-import olesyaiv.edu.api.v2.models.RecipeResponseObject
-import olesyaiv.edu.api.v2.models.RecipeSearchResponse
-import olesyaiv.edu.api.v2.models.RecipeUpdateResponse
-import olesyaiv.edu.api.v2.models.ResponseResult
+import olesyaiv.recipebook.api.v2.models.IResponse
+import olesyaiv.recipebook.api.v2.models.RecipeCostResponse
+import olesyaiv.recipebook.api.v2.models.RecipeCreateResponse
+import olesyaiv.recipebook.api.v2.models.RecipeDeleteResponse
+import olesyaiv.recipebook.api.v2.models.RecipeInitResponse
+import olesyaiv.recipebook.api.v2.models.RecipeReadResponse
+import olesyaiv.recipebook.api.v2.models.RecipeResponseObject
+import olesyaiv.recipebook.api.v2.models.RecipeSearchResponse
+import olesyaiv.recipebook.api.v2.models.RecipeUpdateResponse
+import olesyaiv.recipebook.api.v2.models.ResponseResult
+
 
 fun RecipeBookContext.toTransportRecipe(): IResponse = when (val cmd = command) {
     RecipeBookCommand.CREATE -> toTransportCreate()
@@ -86,12 +87,12 @@ private fun Recipe.toTransportRecipe(): RecipeResponseObject = RecipeResponseObj
     lock = lock.asString()
 )
 
-private fun List<RecipeError>.toTransportErrors(): List<olesyaiv.edu.api.v2.models.Error>? = this
+private fun List<RecipeError>.toTransportErrors(): List<olesyaiv.recipebook.api.v2.models.Error>? = this
     .map { it.toTransportRecipe() }
     .toList()
     .takeIf { it.isNotEmpty() }
 
-private fun RecipeError.toTransportRecipe() = olesyaiv.edu.api.v2.models.Error(
+private fun RecipeError.toTransportRecipe() = olesyaiv.recipebook.api.v2.models.Error(
     code = code.takeIf { it.isNotBlank() },
     group = group.takeIf { it.isNotBlank() },
     field = field.takeIf { it.isNotBlank() },

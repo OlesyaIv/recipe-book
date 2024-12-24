@@ -1,0 +1,27 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/v1/recipes/delete"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "responseType": "delete",
+      "result": "success",
+      "recipe": {
+        "id": "{{{jsonPath request.body '$.recipe.id'}}}",
+        "name": "Cake",
+        "description": "Tasty cake",
+        "ingredients": {
+          "EGG": 2.0
+        }
+      }
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "transformers": [
+      "response-template"
+    ]
+  }
+}

@@ -1,8 +1,8 @@
 @file:Suppress("unused")
 
 import kotlinx.serialization.json.Json
-import olesyaiv.edu.api.v2.models.IRequest
-import olesyaiv.edu.api.v2.models.IResponse
+import olesyaiv.recipebook.api.v2.models.IRequest
+import olesyaiv.recipebook.api.v2.models.IResponse
 
 @Suppress("JSON_FORMAT_REDUNDANT_DEFAULT")
 val apiV2Mapper = Json {

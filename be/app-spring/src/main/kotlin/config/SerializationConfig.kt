@@ -1,4 +1,4 @@
-package olesyaiv.recipebook.spring.config
+package olesyaiv.recipebook.app.spring.config
 
 import apiV2Mapper
 import org.springframework.context.annotation.Bean
