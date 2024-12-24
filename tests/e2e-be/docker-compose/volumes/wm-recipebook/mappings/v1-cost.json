@@ -1,0 +1,19 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/v1/recipes/cost"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "responseType": "cost",
+      "result": "success",
+      "errors": [],
+      "id": "100",
+      "cost": 30
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

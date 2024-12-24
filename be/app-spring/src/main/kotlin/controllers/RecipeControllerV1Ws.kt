@@ -1,4 +1,4 @@
-package olesyaiv.recipebook.spring.controllers
+package olesyaiv.recipebook.app.spring.controllers
 
 import RecipeBookContext
 import apiV1Mapper
@@ -12,9 +12,9 @@ import kotlinx.coroutines.reactive.asFlow
 import kotlinx.coroutines.reactor.asFlux
 import kotlinx.coroutines.runBlocking
 import models.RecipeBookCommand
-import olesyaiv.edu.api.v1.models.IRequest
-import olesyaiv.recipebook.spring.base.AppSettings
-import olesyaiv.recipebook.spring.base.SpringWsSessionV1
+import olesyaiv.recipebook.api.v1.models.IRequest
+import olesyaiv.recipebook.app.spring.base.AppSettings
+import olesyaiv.recipebook.app.spring.base.SpringWsSessionV1
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.socket.WebSocketHandler
 import org.springframework.web.reactive.socket.WebSocketSession

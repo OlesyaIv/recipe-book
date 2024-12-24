@@ -1,10 +1,10 @@
 import models.*
-import olesyaiv.edu.api.v1.models.RecipeCreateObject
-import olesyaiv.edu.api.v1.models.RecipeCreateRequest
-import olesyaiv.edu.api.v1.models.RecipeCreateResponse
-import olesyaiv.edu.api.v1.models.RecipeDebug
-import olesyaiv.edu.api.v1.models.RecipeRequestDebugMode
-import olesyaiv.edu.api.v1.models.RecipeRequestDebugStubs
+import olesyaiv.recipebook.api.v1.models.RecipeCreateObject
+import olesyaiv.recipebook.api.v1.models.RecipeCreateRequest
+import olesyaiv.recipebook.api.v1.models.RecipeCreateResponse
+import olesyaiv.recipebook.api.v1.models.RecipeDebug
+import olesyaiv.recipebook.api.v1.models.RecipeRequestDebugMode
+import olesyaiv.recipebook.api.v1.models.RecipeRequestDebugStubs
 import org.junit.Test
 import stubs.Stubs
 import kotlin.test.assertEquals

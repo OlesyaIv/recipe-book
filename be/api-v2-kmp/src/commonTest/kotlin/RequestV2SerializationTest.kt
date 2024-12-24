@@ -1,9 +1,9 @@
-import olesyaiv.edu.api.v2.models.IRequest
-import olesyaiv.edu.api.v2.models.RecipeCreateObject
-import olesyaiv.edu.api.v2.models.RecipeCreateRequest
-import olesyaiv.edu.api.v2.models.RecipeDebug
-import olesyaiv.edu.api.v2.models.RecipeRequestDebugMode
-import olesyaiv.edu.api.v2.models.RecipeRequestDebugStubs
+import olesyaiv.recipebook.api.v2.models.IRequest
+import olesyaiv.recipebook.api.v2.models.RecipeCreateObject
+import olesyaiv.recipebook.api.v2.models.RecipeCreateRequest
+import olesyaiv.recipebook.api.v2.models.RecipeDebug
+import olesyaiv.recipebook.api.v2.models.RecipeRequestDebugMode
+import olesyaiv.recipebook.api.v2.models.RecipeRequestDebugStubs
 import kotlin.test.Test
 import kotlin.test.assertContains
 import kotlin.test.assertEquals

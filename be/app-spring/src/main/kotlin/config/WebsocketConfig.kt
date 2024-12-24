@@ -1,6 +1,6 @@
-package olesyaiv.recipebook.spring.config
+package olesyaiv.recipebook.app.spring.config
 
-import olesyaiv.recipebook.spring.controllers.RecipeControllerV1Ws
+import olesyaiv.recipebook.app.spring.controllers.RecipeControllerV1Ws
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.reactive.HandlerMapping
