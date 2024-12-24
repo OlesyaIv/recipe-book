@@ -1,9 +1,9 @@
-package olesyaiv.recipebook.spring.config
+package olesyaiv.recipebook.app.spring.config
 
 import RecipeBookCorSettings
 import RecipeProcessor
-import olesyaiv.recipebook.spring.base.AppSettings
-import olesyaiv.recipebook.spring.base.SpringWsSessionRepo
+import olesyaiv.recipebook.app.spring.base.AppSettings
+import olesyaiv.recipebook.app.spring.base.SpringWsSessionRepo
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 

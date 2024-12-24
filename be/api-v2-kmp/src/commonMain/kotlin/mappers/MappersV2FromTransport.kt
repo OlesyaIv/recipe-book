@@ -8,21 +8,21 @@ import models.RecipeFilter
 import models.RecipeId
 import models.RecipeIngredient
 import models.RecipeLock
-import olesyaiv.edu.api.v2.models.IRequest
-import olesyaiv.edu.api.v2.models.RecipeCostRequest
-import olesyaiv.edu.api.v2.models.RecipeCreateObject
-import olesyaiv.edu.api.v2.models.RecipeCreateRequest
-import olesyaiv.edu.api.v2.models.RecipeDebug
-import olesyaiv.edu.api.v2.models.RecipeDeleteObject
-import olesyaiv.edu.api.v2.models.RecipeDeleteRequest
-import olesyaiv.edu.api.v2.models.RecipeReadObject
-import olesyaiv.edu.api.v2.models.RecipeReadRequest
-import olesyaiv.edu.api.v2.models.RecipeRequestDebugMode
-import olesyaiv.edu.api.v2.models.RecipeRequestDebugStubs
-import olesyaiv.edu.api.v2.models.RecipeSearchFilter
-import olesyaiv.edu.api.v2.models.RecipeSearchRequest
-import olesyaiv.edu.api.v2.models.RecipeUpdateObject
-import olesyaiv.edu.api.v2.models.RecipeUpdateRequest
+import olesyaiv.recipebook.api.v2.models.IRequest
+import olesyaiv.recipebook.api.v2.models.RecipeCostRequest
+import olesyaiv.recipebook.api.v2.models.RecipeCreateObject
+import olesyaiv.recipebook.api.v2.models.RecipeCreateRequest
+import olesyaiv.recipebook.api.v2.models.RecipeDebug
+import olesyaiv.recipebook.api.v2.models.RecipeDeleteObject
+import olesyaiv.recipebook.api.v2.models.RecipeDeleteRequest
+import olesyaiv.recipebook.api.v2.models.RecipeReadObject
+import olesyaiv.recipebook.api.v2.models.RecipeReadRequest
+import olesyaiv.recipebook.api.v2.models.RecipeRequestDebugMode
+import olesyaiv.recipebook.api.v2.models.RecipeRequestDebugStubs
+import olesyaiv.recipebook.api.v2.models.RecipeSearchFilter
+import olesyaiv.recipebook.api.v2.models.RecipeSearchRequest
+import olesyaiv.recipebook.api.v2.models.RecipeUpdateObject
+import olesyaiv.recipebook.api.v2.models.RecipeUpdateRequest
 import stubs.Stubs
 
 fun RecipeBookContext.fromTransport(request: IRequest) = when (request) {

@@ -5,16 +5,16 @@ import models.RecipeBookState
 import models.RecipeError
 import models.RecipeId
 import models.RecipeUserId
-import olesyaiv.edu.api.v1.models.IResponse
-import olesyaiv.edu.api.v1.models.RecipeCostResponse
-import olesyaiv.edu.api.v1.models.RecipeCreateResponse
-import olesyaiv.edu.api.v1.models.RecipeDeleteResponse
-import olesyaiv.edu.api.v1.models.RecipeInitResponse
-import olesyaiv.edu.api.v1.models.RecipeReadResponse
-import olesyaiv.edu.api.v1.models.RecipeResponseObject
-import olesyaiv.edu.api.v1.models.RecipeSearchResponse
-import olesyaiv.edu.api.v1.models.RecipeUpdateResponse
-import olesyaiv.edu.api.v1.models.ResponseResult
+import olesyaiv.recipebook.api.v1.models.IResponse
+import olesyaiv.recipebook.api.v1.models.RecipeCostResponse
+import olesyaiv.recipebook.api.v1.models.RecipeCreateResponse
+import olesyaiv.recipebook.api.v1.models.RecipeDeleteResponse
+import olesyaiv.recipebook.api.v1.models.RecipeInitResponse
+import olesyaiv.recipebook.api.v1.models.RecipeReadResponse
+import olesyaiv.recipebook.api.v1.models.RecipeResponseObject
+import olesyaiv.recipebook.api.v1.models.RecipeSearchResponse
+import olesyaiv.recipebook.api.v1.models.RecipeUpdateResponse
+import olesyaiv.recipebook.api.v1.models.ResponseResult
 
 fun RecipeBookContext.toTransportRecipe(): IResponse = when (val cmd = command) {
     RecipeBookCommand.CREATE -> toTransportCreate()
@@ -27,7 +27,7 @@ fun RecipeBookContext.toTransportRecipe(): IResponse = when (val cmd = command) 
     RecipeBookCommand.FINISH -> object: IResponse {
         override val responseType: String? = null
         override val result: ResponseResult? = null
-        override val errors: List<olesyaiv.edu.api.v1.models.Error>? = null
+        override val errors: List<olesyaiv.recipebook.api.v1.models.Error>? = null
     }
     RecipeBookCommand.NONE -> throw UnknownCommand(cmd)
 }
@@ -86,12 +86,12 @@ private fun Recipe.toTransportRecipe(): RecipeResponseObject = RecipeResponseObj
     ingredients = ingredients.map { (ingredient, quantity) -> ingredient.name to quantity }.toMap(),
 )
 
-private fun List<RecipeError>.toTransportErrors(): List<olesyaiv.edu.api.v1.models.Error>? = this
+private fun List<RecipeError>.toTransportErrors(): List<olesyaiv.recipebook.api.v1.models.Error>? = this
     .map { it.toTransportRecipe() }
     .toList()
     .takeIf { it.isNotEmpty() }
 
-private fun RecipeError.toTransportRecipe() = olesyaiv.edu.api.v1.models.Error(
+private fun RecipeError.toTransportRecipe() = olesyaiv.recipebook.api.v1.models.Error(
     code = code.takeIf { it.isNotBlank() },
     group = group.takeIf { it.isNotBlank() },
     field = field.takeIf { it.isNotBlank() },

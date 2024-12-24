@@ -1,4 +1,4 @@
-package olesyaiv.recipebook.spring.mock
+package olesyaiv.recipebook.app.spring.mock
 
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions

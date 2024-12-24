@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform) apply false
 }
 
-group = "olesyaiv.edu"
+group = "olesyaiv.recipebook"
 version = "0.0.1"
 
 allprojects {

@@ -1,0 +1,25 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/v1/recipes/create"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "responseType": "create",
+      "result": "success",
+      "recipe": {
+        "id": "123",
+        "name": "{{{jsonPath request.body '$.recipe.name'}}}",
+        "description": "Tasty cake",
+        "ingredients": {
+          "EGG": 2.0
+        }
+      }
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "transformers": ["response-template"]
+  }
+}

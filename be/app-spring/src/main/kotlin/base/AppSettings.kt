@@ -1,4 +1,4 @@
-package olesyaiv.recipebook.spring.base
+package olesyaiv.recipebook.app.spring.base
 
 import IAppSettings
 import RecipeBookCorSettings

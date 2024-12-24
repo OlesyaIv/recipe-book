@@ -14,3 +14,5 @@ plugins {
 includeBuild("lessons")
 includeBuild("be")
 includeBuild("build-plugin")
+includeBuild("libs")
+includeBuild("tests")

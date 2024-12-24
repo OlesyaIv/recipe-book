@@ -1,4 +1,4 @@
-package olesyaiv.recipebook.spring.config
+package olesyaiv.recipebook.app.spring.config
 
 import org.springdoc.core.configuration.SpringDocConfiguration
 import org.springdoc.core.properties.SpringDocConfigProperties

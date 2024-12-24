@@ -1,9 +1,9 @@
-package olesyaiv.recipebook.spring.controllers
+package olesyaiv.recipebook.app.spring.controllers
 
-import olesyaiv.recipebook.spring.base.AppSettings
 import controllerHelper
 import fromTransport
-import olesyaiv.edu.api.v1.models.*
+import olesyaiv.recipebook.api.v1.models.*
+import olesyaiv.recipebook.app.spring.base.AppSettings
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
