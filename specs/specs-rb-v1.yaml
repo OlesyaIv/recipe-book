@@ -196,7 +196,7 @@ components:
           cost: '#/components/schemas/RecipeCostResponse'
           init: '#/components/schemas/RecipeInitResponse'
 
-    UserId:
+    RecipeUserId:
       type: string
       description: Идентификатор пользователя
     RecipeId:
@@ -300,6 +300,8 @@ components:
         searchString:
           type: string
           description: Поисковая строка
+        ownerId:
+          $ref: '#/components/schemas/RecipeUserId'
 
     RecipeSearchRequest:
       allOf:
@@ -328,7 +330,7 @@ components:
             id:
               $ref: '#/components/schemas/RecipeId'
             ownerId:
-              $ref: '#/components/schemas/UserId'
+              $ref: '#/components/schemas/RecipeUserId'
             lock:
               $ref: '#/components/schemas/RecipeLock'
 

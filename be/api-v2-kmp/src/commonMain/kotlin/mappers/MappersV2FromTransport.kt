@@ -1,4 +1,4 @@
-package mappers
+package olesyaiv.recipebook.api.v2.mappers
 
 import RecipeBookContext
 import models.Recipe
@@ -8,6 +8,7 @@ import models.RecipeFilter
 import models.RecipeId
 import models.RecipeIngredient
 import models.RecipeLock
+import models.RecipeUserId
 import olesyaiv.recipebook.api.v2.models.IRequest
 import olesyaiv.recipebook.api.v2.models.RecipeCostRequest
 import olesyaiv.recipebook.api.v2.models.RecipeCreateObject
@@ -112,7 +113,8 @@ fun RecipeBookContext.fromTransport(request: RecipeCostRequest) {
 }
 
 private fun RecipeSearchFilter?.toInternal(): RecipeFilter = RecipeFilter(
-    searchString = this?.searchString ?: ""
+    searchString = this?.searchString ?: "",
+    ownerId = this?.ownerId?.let { RecipeUserId(it) } ?: RecipeUserId.NONE,
 )
 
 private fun RecipeCreateObject.toInternal(): Recipe = Recipe(

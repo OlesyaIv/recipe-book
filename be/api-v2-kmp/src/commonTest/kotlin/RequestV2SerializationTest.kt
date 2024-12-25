@@ -1,3 +1,5 @@
+package olesyaiv.recipebook.api.v2
+
 import olesyaiv.recipebook.api.v2.models.IRequest
 import olesyaiv.recipebook.api.v2.models.RecipeCreateObject
 import olesyaiv.recipebook.api.v2.models.RecipeCreateRequest

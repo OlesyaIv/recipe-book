@@ -17,9 +17,14 @@ fun Throwable.asRecipeError(
 )
 
 fun RecipeBookContext.addError(vararg error: RecipeError) = errors.addAll(error)
+fun RecipeBookContext.addErrors(error: Collection<RecipeError>) = errors.addAll(error)
 
 fun RecipeBookContext.fail(error: RecipeError) {
     addError(error)
+    state = RecipeBookState.FAILING
+}
+fun RecipeBookContext.fail(errors: Collection<RecipeError>) {
+    addErrors(errors)
     state = RecipeBookState.FAILING
 }
 
@@ -36,4 +41,14 @@ fun errorValidation(
     field = field,
     group = "validation",
     message = "Validation error for field $field: $description",
+)
+
+fun errorSystem(
+    violationCode: String,
+    e: Throwable,
+) = RecipeError(
+    code = "system-$violationCode",
+    group = "system",
+    message = "System error occurred. Our stuff has been informed, please retry later",
+    exception = e,
 )

@@ -3,7 +3,6 @@ package olesyaiv.recipebook.app.spring.controllers
 import RecipeBookContext
 import apiV1Mapper
 import controllerHelper
-import fromTransport
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.merge
@@ -15,11 +14,12 @@ import models.RecipeBookCommand
 import olesyaiv.recipebook.api.v1.models.IRequest
 import olesyaiv.recipebook.app.spring.base.AppSettings
 import olesyaiv.recipebook.app.spring.base.SpringWsSessionV1
+import olesyaiv.recipebook.mappers.v1.fromTransport
+import olesyaiv.recipebook.mappers.v1.toTransportRecipe
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.socket.WebSocketHandler
 import org.springframework.web.reactive.socket.WebSocketSession
 import reactor.core.publisher.Mono
-import toTransportRecipe
 
 @Component
 class RecipeControllerV1Ws(

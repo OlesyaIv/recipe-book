@@ -30,11 +30,17 @@ dependencies {
 
     implementation(project(":biz"))
 
+    implementation(projects.repoStubs)
+    implementation(projects.repoInmemory)
+    implementation(projects.repoPostgres)
+    testImplementation(projects.repoCommon)
+    testImplementation(projects.stubs)
+
     testImplementation(kotlin("test-junit5"))
     testImplementation(libs.spring.test)
     testImplementation(libs.mockito.kotlin)
-
-    testImplementation(project(":stubs"))
+    testImplementation(libs.spring.mockk)
+//    testImplementation(project(":stubs"))
 }
 
 tasks {
@@ -53,4 +59,5 @@ tasks {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+    environment("RECIPE_DB", "education_recipes")
 }

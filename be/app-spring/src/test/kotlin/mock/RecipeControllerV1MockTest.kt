@@ -6,6 +6,12 @@ import RecipeStub
 import olesyaiv.recipebook.api.v1.models.*
 import olesyaiv.recipebook.app.spring.config.RecipeBookConfig
 import olesyaiv.recipebook.app.spring.controllers.RecipeControllerV1Fine
+import olesyaiv.recipebook.mappers.v1.toTransportCost
+import olesyaiv.recipebook.mappers.v1.toTransportCreate
+import olesyaiv.recipebook.mappers.v1.toTransportDelete
+import olesyaiv.recipebook.mappers.v1.toTransportRead
+import olesyaiv.recipebook.mappers.v1.toTransportSearch
+import olesyaiv.recipebook.mappers.v1.toTransportUpdate
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.mockito.kotlin.any
@@ -16,12 +22,6 @@ import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
 import org.springframework.test.web.reactive.server.WebTestClient
 import org.springframework.web.reactive.function.BodyInserters
-import toTransportCost
-import toTransportCreate
-import toTransportDelete
-import toTransportRead
-import toTransportSearch
-import toTransportUpdate
 import kotlin.test.Test
 
 @WebFluxTest(RecipeControllerV1Fine::class, RecipeBookConfig::class)
@@ -38,7 +38,7 @@ internal class RecipeControllerV1MockTest {
         wheneverBlocking { processor.exec(any()) }.then {
             it.getArgument<RecipeBookContext>(0).apply {
                 recipeResponse = RecipeStub.get()
-                recipesResponse = RecipeStub.prepareSearchList("sdf").toMutableList()
+                recipesResponse = RecipeStub.prepareSearchList("Napoleon").toMutableList()
             }
         }
     }
@@ -75,7 +75,7 @@ internal class RecipeControllerV1MockTest {
     fun searchRecipe() = testStubRecipe(
         "/v1/recipes/search",
         RecipeSearchRequest(),
-        RecipeBookContext(recipesResponse = RecipeStub.prepareSearchList("sdf").toMutableList())
+        RecipeBookContext(recipesResponse = RecipeStub.prepareSearchList("Napoleon").toMutableList())
             .toTransportSearch().copy(responseType = "search")
     )
 

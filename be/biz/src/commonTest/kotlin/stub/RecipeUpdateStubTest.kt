@@ -1,6 +1,5 @@
 package stub
 
-import NONE
 import RecipeBookContext
 import RecipeProcessor
 import kotlinx.coroutines.test.runTest

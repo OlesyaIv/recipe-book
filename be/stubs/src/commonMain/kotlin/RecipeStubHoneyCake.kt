@@ -1,6 +1,7 @@
 import models.Recipe
 import models.RecipeId
 import models.RecipeIngredient
+import models.RecipeLock
 import models.RecipeUserId
 
 object RecipeStubHoneyCake {
@@ -12,6 +13,7 @@ object RecipeStubHoneyCake {
             ownerId = RecipeUserId("user-1"),
             ingredients = mapOf(
                 RecipeIngredient.EGG to 2.0F
-            )
+            ),
+            lock = RecipeLock("123")
         )
 }
