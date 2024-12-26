@@ -2,15 +2,13 @@ import kotlinx.coroutines.test.runTest
 import mappers.fromTransport
 import mappers.toTransportRecipe
 import models.RecipeIngredient
-import olesyaiv.edu.api.v2.models.IRequest
-import olesyaiv.edu.api.v2.models.IResponse
-import olesyaiv.edu.api.v2.models.RecipeCreateObject
-import olesyaiv.edu.api.v2.models.RecipeCreateRequest
-import olesyaiv.edu.api.v2.models.RecipeCreateResponse
-import olesyaiv.edu.api.v2.models.RecipeDebug
-import olesyaiv.edu.api.v2.models.RecipeRequestDebugMode
-import olesyaiv.edu.api.v2.models.RecipeRequestDebugStubs
-import olesyaiv.edu.api.v2.models.ResponseResult
+import olesyaiv.recipebook.api.v2.models.RecipeCreateObject
+import olesyaiv.recipebook.api.v2.models.RecipeCreateRequest
+import olesyaiv.recipebook.api.v2.models.RecipeCreateResponse
+import olesyaiv.recipebook.api.v2.models.RecipeDebug
+import olesyaiv.recipebook.api.v2.models.RecipeRequestDebugMode
+import olesyaiv.recipebook.api.v2.models.RecipeRequestDebugStubs
+import olesyaiv.recipebook.api.v2.models.ResponseResult
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

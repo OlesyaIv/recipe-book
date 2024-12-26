@@ -1,7 +1,7 @@
-package olesyaiv.recipebook.spring.base
+package olesyaiv.recipebook.app.spring.base
 
 import apiV1ResponseSerialize
-import olesyaiv.edu.api.v1.models.IResponse
+import olesyaiv.recipebook.api.v1.models.IResponse
 import org.springframework.web.reactive.socket.WebSocketSession
 import reactor.core.publisher.Mono
 import ws.IRecipeBookWsSession

@@ -14,7 +14,6 @@ kotlin {
 
                 // transport models
                 implementation(project(":common"))
-//                implementation(project(":api-logs"))
 
                 implementation(project(":biz"))
             }

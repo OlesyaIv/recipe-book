@@ -1,12 +1,12 @@
-package olesyaiv.recipebook.spring.mock
+package olesyaiv.recipebook.app.spring.mock
 
 import RecipeBookContext
 import RecipeStub
 import org.assertj.core.api.Assertions.assertThat
-import olesyaiv.recipebook.spring.config.RecipeBookConfig
-import olesyaiv.recipebook.spring.controllers.RecipeControllerV1Fine
 import models.RecipeBookState
-import olesyaiv.edu.api.v1.models.*
+import olesyaiv.recipebook.api.v1.models.*
+import olesyaiv.recipebook.app.spring.config.RecipeBookConfig
+import olesyaiv.recipebook.app.spring.controllers.RecipeControllerV1Fine
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest
 import org.springframework.http.MediaType

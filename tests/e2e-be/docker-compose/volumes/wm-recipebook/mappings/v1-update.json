@@ -1,0 +1,24 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/v1/recipes/update"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "responseType": "update",
+      "result": "success",
+      "recipe": {
+        "id": "123",
+        "name": "Updated Cake",
+        "description": "Tasty cake",
+        "ingredients": {
+          "EGG": 2.0
+        }
+      }
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

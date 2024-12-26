@@ -1,11 +1,11 @@
-package olesyaiv.recipebook.spring.mock
+package olesyaiv.recipebook.app.spring.mock
 
 import RecipeBookContext
 import RecipeProcessor
 import RecipeStub
-import olesyaiv.recipebook.spring.config.RecipeBookConfig
-import olesyaiv.recipebook.spring.controllers.RecipeControllerV1Fine
-import olesyaiv.edu.api.v1.models.*
+import olesyaiv.recipebook.api.v1.models.*
+import olesyaiv.recipebook.app.spring.config.RecipeBookConfig
+import olesyaiv.recipebook.app.spring.controllers.RecipeControllerV1Fine
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.mockito.kotlin.any

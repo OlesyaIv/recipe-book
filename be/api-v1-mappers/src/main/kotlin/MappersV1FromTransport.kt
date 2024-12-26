@@ -1,20 +1,20 @@
 import exceptions.UnknownRequestClass
 import models.*
-import olesyaiv.edu.api.v1.models.IRequest
-import olesyaiv.edu.api.v1.models.RecipeCostRequest
-import olesyaiv.edu.api.v1.models.RecipeCreateObject
-import olesyaiv.edu.api.v1.models.RecipeCreateRequest
-import olesyaiv.edu.api.v1.models.RecipeDebug
-import olesyaiv.edu.api.v1.models.RecipeDeleteObject
-import olesyaiv.edu.api.v1.models.RecipeDeleteRequest
-import olesyaiv.edu.api.v1.models.RecipeReadObject
-import olesyaiv.edu.api.v1.models.RecipeReadRequest
-import olesyaiv.edu.api.v1.models.RecipeRequestDebugMode
-import olesyaiv.edu.api.v1.models.RecipeRequestDebugStubs
-import olesyaiv.edu.api.v1.models.RecipeSearchFilter
-import olesyaiv.edu.api.v1.models.RecipeSearchRequest
-import olesyaiv.edu.api.v1.models.RecipeUpdateObject
-import olesyaiv.edu.api.v1.models.RecipeUpdateRequest
+import olesyaiv.recipebook.api.v1.models.IRequest
+import olesyaiv.recipebook.api.v1.models.RecipeCostRequest
+import olesyaiv.recipebook.api.v1.models.RecipeCreateObject
+import olesyaiv.recipebook.api.v1.models.RecipeCreateRequest
+import olesyaiv.recipebook.api.v1.models.RecipeDebug
+import olesyaiv.recipebook.api.v1.models.RecipeDeleteObject
+import olesyaiv.recipebook.api.v1.models.RecipeDeleteRequest
+import olesyaiv.recipebook.api.v1.models.RecipeReadObject
+import olesyaiv.recipebook.api.v1.models.RecipeReadRequest
+import olesyaiv.recipebook.api.v1.models.RecipeRequestDebugMode
+import olesyaiv.recipebook.api.v1.models.RecipeRequestDebugStubs
+import olesyaiv.recipebook.api.v1.models.RecipeSearchFilter
+import olesyaiv.recipebook.api.v1.models.RecipeSearchRequest
+import olesyaiv.recipebook.api.v1.models.RecipeUpdateObject
+import olesyaiv.recipebook.api.v1.models.RecipeUpdateRequest
 import stubs.Stubs
 
 fun RecipeBookContext.fromTransport(request: IRequest) = when (request) {
@@ -123,8 +123,8 @@ private fun RecipeUpdateObject.toInternal(): Recipe = Recipe(
     id = this.id.toRecipeId(),
     title = this.name ?: "",
     description = this.description ?: "",
-    ingredients = this.ingredients?.mapNotNull { (ingredientDescription, quantity) ->
-        RecipeIngredient.fromName(ingredientDescription)?.let { ingredient -> ingredient to quantity }
+    ingredients = this.ingredients?.mapNotNull { (ingredientTitle, quantity) ->
+        RecipeIngredient.fromName(ingredientTitle)?.let { ingredient -> ingredient to quantity }
     }?.toMap() ?: mutableMapOf(),
     lock = lock.toRecipeLock(),
 )
