@@ -1,4 +1,6 @@
-import exceptions.UnknownRequestClass
+package olesyaiv.recipebook.mappers.v1
+
+import RecipeBookContext
 import models.*
 import olesyaiv.recipebook.api.v1.models.IRequest
 import olesyaiv.recipebook.api.v1.models.RecipeCostRequest
@@ -15,6 +17,7 @@ import olesyaiv.recipebook.api.v1.models.RecipeSearchFilter
 import olesyaiv.recipebook.api.v1.models.RecipeSearchRequest
 import olesyaiv.recipebook.api.v1.models.RecipeUpdateObject
 import olesyaiv.recipebook.api.v1.models.RecipeUpdateRequest
+import olesyaiv.recipebook.mappers.v1.exceptions.UnknownRequestClass
 import stubs.Stubs
 
 fun RecipeBookContext.fromTransport(request: IRequest) = when (request) {
@@ -108,7 +111,8 @@ fun RecipeBookContext.fromTransport(request: RecipeCostRequest) {
 }
 
 private fun RecipeSearchFilter?.toInternal(): RecipeFilter = RecipeFilter(
-    searchString = this?.searchString ?: ""
+    searchString = this?.searchString ?: "",
+    ownerId = this?.ownerId?.let { RecipeUserId(it) } ?: RecipeUserId.NONE,
 )
 
 private fun RecipeCreateObject.toInternal(): Recipe = Recipe(

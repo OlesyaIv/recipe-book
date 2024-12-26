@@ -30,4 +30,7 @@ tasks {
             dependsOn(subprojects.map {  it.getTasksByName(tsk,false)})
         }
     }
+    create("e2eTests") {
+        dependsOn(project(":e2e-be").tasks.getByName("check"))
+    }
 }

@@ -1,7 +1,7 @@
 import kotlinx.coroutines.test.runTest
-import mappers.fromTransport
-import mappers.toTransportRecipe
 import models.RecipeIngredient
+import olesyaiv.recipebook.api.v2.mappers.fromTransport
+import olesyaiv.recipebook.api.v2.mappers.toTransportRecipe
 import olesyaiv.recipebook.api.v2.models.RecipeCreateObject
 import olesyaiv.recipebook.api.v2.models.RecipeCreateRequest
 import olesyaiv.recipebook.api.v2.models.RecipeCreateResponse

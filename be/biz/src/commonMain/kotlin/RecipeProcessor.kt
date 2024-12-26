@@ -1,12 +1,25 @@
-
 import general.initStatus
 import general.operation
 import models.RecipeBookCommand
+import models.RecipeBookState
 import models.RecipeId
 import models.RecipeLock
+import olesyaiv.recipebook.lib.cor.chain
 import stubs.*
 import olesyaiv.recipebook.lib.cor.rootChain
 import olesyaiv.recipebook.lib.cor.worker
+import repo.checkLock
+import repo.initRepo
+import repo.repoCreate
+import repo.repoDelete
+import repo.repoPrepareCreate
+import repo.repoPrepareDelete
+import repo.repoPrepareUpdate
+import repo.repoRead
+import repo.repoSearch
+import repo.repoUpdate
+import repo.prepareResult
+import repo.repoPrepareCost
 import validation.*
 
 const val stubsHandlingTitle = "Обработка стабов"
@@ -22,13 +35,15 @@ const val clearFieldTitle = "Очистка "
 const val notEmptyFieldTitle = "Проверка, что %s не пусто: "
 const val symbolsCheckTitle = "Проверка символов"
 
-@Suppress("unused", "RedundantSuspendModifier")
-class RecipeProcessor {
+class RecipeProcessor(
+    private val corSettings: RecipeBookCorSettings = RecipeBookCorSettings.NONE
+) {
 
-    suspend fun exec(ctx: RecipeBookContext) = businessChain.exec(ctx)
+    suspend fun exec(ctx: RecipeBookContext) = businessChain.exec(ctx.also { it.corSettings = corSettings })
 
-    private val businessChain = rootChain {
+    private val businessChain = rootChain<RecipeBookContext> {
         initStatus("Инициализация статуса")
+        initRepo("Инициализация репозитория")
 
         operation("Создание", RecipeBookCommand.CREATE) {
             stubs(stubsHandlingTitle) {
@@ -49,6 +64,12 @@ class RecipeProcessor {
                 validateDescriptionHasContent(symbolsCheckTitle)
                 finishRecipeValidation(successValidationTitle)
             }
+            chain {
+                title = "Логика сохранения"
+                repoPrepareCreate("Подготовка объекта для сохранения")
+                repoCreate("Создание в БД")
+            }
+            prepareResult("Подготовка ответа")
         }
         operation("Получение", RecipeBookCommand.READ) {
             stubs(stubsHandlingTitle) {
@@ -64,6 +85,16 @@ class RecipeProcessor {
                 validateIdProperFormat(idFormatCheckTitle)
                 finishRecipeValidation(successValidationTitle)
             }
+            chain {
+                title = "Логика чтения"
+                repoRead("Чтение из БД")
+                worker {
+                    title = "Подготовка ответа для Read"
+                    on { state == RecipeBookState.RUNNING }
+                    handle { recipeRepoDone = recipeRepoRead }
+                }
+            }
+            prepareResult("Подготовка ответа")
         }
         operation("Изменение", RecipeBookCommand.UPDATE) {
             stubs(stubsHandlingTitle) {
@@ -90,6 +121,14 @@ class RecipeProcessor {
                 validateDescriptionHasContent("Проверка на наличие содержания в описании")
                 finishRecipeValidation(successValidationTitle)
             }
+            chain {
+                title = "Логика сохранения"
+                repoRead("Чтение из БД")
+                checkLock("Проверяем консистентность по оптимистичной блокировке")
+                repoPrepareUpdate("Подготовка объекта для обновления")
+                repoUpdate("Обновление в БД")
+            }
+            prepareResult("Подготовка ответа")
         }
         operation("Удаление", RecipeBookCommand.DELETE) {
             stubs(stubsHandlingTitle) {
@@ -110,6 +149,13 @@ class RecipeProcessor {
                 validateLockProperFormat("Проверка формата lock")
                 finishRecipeValidation(successValidationTitle)
             }
+            chain {
+                title = "Логика удаления"
+                repoRead("Чтение из БД")
+                repoPrepareDelete("Подготовка объекта для удаления")
+                repoDelete("Удаление из БД")
+            }
+            prepareResult("Подготовка ответа")
         }
         operation("Поиск", RecipeBookCommand.SEARCH) {
             stubs(stubsHandlingTitle) {
@@ -123,6 +169,8 @@ class RecipeProcessor {
                 validateSearchStringLength("Валидация длины строки поиска в фильтре")
                 finishRecipeFilterValidation(successValidationTitle)
             }
+            repoSearch("Поиск в БД по фильтру")
+            prepareResult("Подготовка ответа")
         }
         operation("Стоимость ингредиентов", RecipeBookCommand.COST) {
             stubs(stubsHandlingTitle) {
@@ -138,6 +186,12 @@ class RecipeProcessor {
                 validateIdProperFormat(idFormatCheckTitle)
                 finishRecipeValidation(successValidationTitle)
             }
+            chain {
+                title = "Логика поиска в БД"
+                repoRead("Чтение из БД")
+                repoPrepareCost("Подготовка стоимости ингредиентов")
+            }
+            prepareResult("Подготовка ответа")
         }
     }.build()
 }

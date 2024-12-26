@@ -1,9 +1,13 @@
+package olesyaiv.recipebook.mappers.v1
+
+import RecipeBookContext
 import exceptions.UnknownCommand
 import models.Recipe
 import models.RecipeBookCommand
 import models.RecipeBookState
 import models.RecipeError
 import models.RecipeId
+import models.RecipeLock
 import models.RecipeUserId
 import olesyaiv.recipebook.api.v1.models.IResponse
 import olesyaiv.recipebook.api.v1.models.RecipeCostResponse
@@ -84,21 +88,22 @@ private fun Recipe.toTransportRecipe(): RecipeResponseObject = RecipeResponseObj
     description = description.takeIf { it.isNotBlank() },
     ownerId = ownerId.takeIf { it != RecipeUserId.NONE }?.asString(),
     ingredients = ingredients.map { (ingredient, quantity) -> ingredient.name to quantity }.toMap(),
+    lock = lock.takeIf { it != RecipeLock.NONE }?.asString()
 )
 
-private fun List<RecipeError>.toTransportErrors(): List<olesyaiv.recipebook.api.v1.models.Error>? = this
+internal fun List<RecipeError>.toTransportErrors(): List<olesyaiv.recipebook.api.v1.models.Error>? = this
     .map { it.toTransportRecipe() }
     .toList()
     .takeIf { it.isNotEmpty() }
 
-private fun RecipeError.toTransportRecipe() = olesyaiv.recipebook.api.v1.models.Error(
+internal fun RecipeError.toTransportRecipe() = olesyaiv.recipebook.api.v1.models.Error(
     code = code.takeIf { it.isNotBlank() },
     group = group.takeIf { it.isNotBlank() },
     field = field.takeIf { it.isNotBlank() },
     message = message.takeIf { it.isNotBlank() },
 )
 
-private fun RecipeBookState.toResult(): ResponseResult? = when (this) {
+internal fun RecipeBookState.toResult(): ResponseResult? = when (this) {
     RecipeBookState.RUNNING -> ResponseResult.SUCCESS
     RecipeBookState.FAILING -> ResponseResult.ERROR
     RecipeBookState.FINISHING -> ResponseResult.SUCCESS

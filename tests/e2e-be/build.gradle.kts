@@ -6,6 +6,7 @@ dependencies {
     implementation(kotlin("stdlib"))
 
     implementation("olesyaiv.recipebook:api-v1-jackson")
+    implementation("olesyaiv.recipebook:api-v2-kmp")
 
     testImplementation(libs.kermit)
 

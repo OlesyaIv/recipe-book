@@ -24,3 +24,17 @@ springdoc:
         url: specs-rb-v1.yaml
       - name: v2
         url: specs-rb-v2.yaml
+
+recipebook:
+  repository:
+    test: "inmemory"
+    prod: "$DB_TYPE_PROD:inmemory"
+
+psql:
+  schema: public
+  database: "${RECIPE_DB:education_recipes}"
+  host: "${RECIPE_DB_HOST:localhost}"
+  port: "${RECIPE_DB_PORT:5432}"
+  user: "${RECIPE_DB_USER:postgres}"
+  password: "${RECIPE_DB_PASS:postgres}"
+

@@ -1,4 +1,4 @@
-package mappers
+package olesyaiv.recipebook.api.v2.mappers
 
 import RecipeBookContext
 import models.RecipeBookCommand

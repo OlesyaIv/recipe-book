@@ -5,6 +5,8 @@ import olesyaiv.recipebook.api.v1.models.RecipeCreateResponse
 import olesyaiv.recipebook.api.v1.models.RecipeDebug
 import olesyaiv.recipebook.api.v1.models.RecipeRequestDebugMode
 import olesyaiv.recipebook.api.v1.models.RecipeRequestDebugStubs
+import olesyaiv.recipebook.mappers.v1.fromTransport
+import olesyaiv.recipebook.mappers.v1.toTransportRecipe
 import org.junit.Test
 import stubs.Stubs
 import kotlin.test.assertEquals
